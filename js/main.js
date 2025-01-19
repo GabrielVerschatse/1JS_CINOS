@@ -40,7 +40,7 @@ function displayMovies(movies) {
                 <p>Année: ${movie.Year}</p>
                 <p>Note: ${movie.imdbRating}/10</p>
                 <p>Genre: ${movie.Genre}</p>
-                <button class="more">Détails</button>
+                <button class="more">En savoir plus</button>
             </div>
         `;
         
