@@ -43,7 +43,6 @@ function displayMovies(movies) {
                 <p><strong>Réalisateur:</strong> ${movie.Director}</p>
                 <p><strong>Acteurs:</strong> ${movie.Actors}</p>
                 <p><strong>Durée:</strong> ${movie.Runtime}</p>
-                <p><strong>Langue:</strong> ${movie.Language}</p>
                 <p><strong>Résumé:</strong> ${movie.Plot}</p>
             </div>
         `;
@@ -55,10 +54,13 @@ function displayMovies(movies) {
 document.addEventListener('DOMContentLoaded', () => {
     getTrendingMovies();
     
-    const searchButton = document.querySelector('.nav-btn:nth-child(2)');
     
-    searchButton.addEventListener('click', () => {
-        const searchTerm = prompt('Entrez le titre du film à rechercher:');
+    const searchInput = document.querySelector('.search-input');
+    const searchForm = document.querySelector('.search-form');
+
+    searchForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const searchTerm = searchInput.value.trim();
         if (searchTerm && searchTerm.length >= 3) {
             searchMovies(searchTerm);
         } else if (searchTerm) {

@@ -1,5 +1,7 @@
 const searchInput = document.getElementById("search-bar");
 const resultsDiv = document.getElementById("main-box");
+const loadMoreButton = document.getElementById("loadMore");
+
 
 
 let currentPage = 1;
@@ -62,6 +64,7 @@ const loadMoreResults = () => {
     fetchMovies(currentPage + 1); 
 };
 searchInput.addEventListener("input", () => fetchMovies(1)); 
+loadMoreButton.addEventListener("click", loadMoreResults);
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('more')) {
@@ -70,3 +73,18 @@ document.addEventListener('click', (event) => {
         window.location.href = `movie.html?title=${title}`;
     }    
 });
+
+document.addEventListener('click', (event) => {
+    const searchButton = document.querySelector('.nav-btn:nth-child(2)');
+    if (event.target === searchButton) {
+        window.location.href = 'search.html';
+    }    
+});
+
+document.addEventListener('click', (event) => {
+    const homeButton = document.querySelector('.nav-btn:nth-child(1)');
+    if (event.target === homeButton) {
+        window.location.href = 'index.html';
+    }    
+});
+
