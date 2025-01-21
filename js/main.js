@@ -8,6 +8,8 @@ const popularMovies = [
     "GLADIATOR II",
     "Wicked",
     "Carry-On",
+    "Blink Twice",
+    "Mufasa : The Lion King",
 ];
 
 async function getTrendingMovies() {
@@ -72,20 +74,6 @@ async function searchMovies(searchTerm, page = 1) {
 
 document.addEventListener('DOMContentLoaded', () => {
     getTrendingMovies();
-    
-    
-    const searchInput = document.querySelector('.search-input');
-    const searchForm = document.querySelector('.search-form');
-
-    searchForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const searchTerm = searchInput.value.trim();
-        if (searchTerm && searchTerm.length >= 3) {
-            searchMovies(searchTerm);
-        } else if (searchTerm) {
-            alert('Veuillez entrer au moins 3 caractères pour la recherche');
-        }
-    });
 });
 
 document.addEventListener('click', (event) => {
