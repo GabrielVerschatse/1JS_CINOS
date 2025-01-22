@@ -25,18 +25,36 @@ header {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 nav {
     max-width: 1900px;
     margin: 0 auto;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
     padding: 0 1rem;
     position: relative;
-    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    height: 60px;
 }
+
+.logo {
+    position: absolute;
+    left: 1rem;
+}
+
+nav h3 {
+    color: white;
+    position: absolute;
+    right: 1rem;
+    margin: 0;
+}
+
 
 nav button {
     background-color: rgba(255, 255, 255, 0.15);
@@ -54,11 +72,6 @@ nav button {
 nav button:hover {
     background-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-2px);
-}
-
-.nav-links {
-    margin-right: auto;
-    margin-left: auto;
 }
 
 
@@ -172,4 +185,27 @@ h1 i {
 .more:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+    nav h3 {
+        display: none;
+    }
+
+    nav button {
+        padding: 0.8rem 1rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .box {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #search-bar {
+        width: 100%;
+    }
 }
