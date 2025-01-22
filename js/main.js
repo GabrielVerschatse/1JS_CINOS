@@ -1,35 +1,42 @@
-// Constantes
 const OMDB_API_KEY = 'fb886a74';
 const BASE_URL = 'https://www.omdbapi.com/';
 const filmsContainer = document.querySelector('.films');
+const loadMoreBtn = document.getElementById('loadMore');
 
+const movies2024 = {
+    'upcoming': [
+        "GLADIATOR II", "Wicked", "Deadpool 3", "Inside Out 2", "Mufasa: The Lion King",
+        "Furiosa", "Kingdom of the Planet of the Apes", "Godzilla x Kong", "Despicable Me 4", 
+        "Captain America: Brave New World", "Garfield", "Ghostbusters: Frozen Empire",
+        "Bad Boys 4", "The Fall Guy", "Kung Fu Panda 4", "Mickey 17", "Nosferatu",
+        "Civil War", "Lord of the Rings: The War of the Rohirrim", "Carry-On", "Blink Twice"
+    ]
+};
 
-const popularMovies = [
-    "GLADIATOR II",
-    "Wicked",
-    "Carry-On",
-    "Blink Twice",
-    "Mufasa : The Lion King",
-];
+function getRandomMovies(count) {
+    const shuffled = [...movies2024.upcoming].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
 
-async function getTrendingMovies() {
+async function loadMoreMovies() {
     try {
-        const moviePromises = popularMovies.slice(0, 8).map(async (title) => {
+        const randomMovies = getRandomMovies(5);
+        const moviePromises = randomMovies.map(async (title) => {
             const response = await fetch(`${BASE_URL}?apikey=${OMDB_API_KEY}&t=${title}&type=movie`);
-            const data = await response.json();
-            return data;
+            return response.json();
         });
 
         const movies = await Promise.all(moviePromises);
-        displayMovies(movies.filter(movie => movie.Response === "True"));
+        displayMovies(movies.filter(movie => movie.Response === "True"), false);
     } catch (error) {
         console.error('Erreur:', error);
-        filmsContainer.innerHTML = '<p>Erreur lors du chargement des films</p>';
     }
 }
 
-function displayMovies(movies) {
-    filmsContainer.innerHTML = '';
+function displayMovies(movies, clearContainer = false) {
+    if (clearContainer) {
+        filmsContainer.innerHTML = '';
+    }
     
     movies.forEach(movie => {
         const movieElement = document.createElement('div');
@@ -49,6 +56,12 @@ function displayMovies(movies) {
         filmsContainer.appendChild(movieElement);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadMoreMovies();
+});
+
+loadMoreBtn.addEventListener('click', loadMoreMovies);
 
 async function searchMovies(searchTerm, page = 1) {
     try {

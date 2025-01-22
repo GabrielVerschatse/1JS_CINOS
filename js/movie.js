@@ -1,4 +1,3 @@
-// Constantes
 const OMDB_API_KEY = 'fb886a74';
 const BASE_URL = 'https://www.omdbapi.com/';
 const filmsContainer = document.querySelector('.films');
