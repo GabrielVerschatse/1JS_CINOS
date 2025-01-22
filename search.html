@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="/1JS_CINOS/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
 <head>
     <meta charset="UTF-8">
@@ -12,12 +12,13 @@
     <header>
         <nav>
             <div class="logo">
-                <img id="logo_ticket" src="/1JS_CINOS/Assets/icons/logo1.png" alt="CINOS Logo">
+                <img id="logo_ticket" src="Assets/icons/logo1.png" alt="CINOS Logo">
             </div>
             <div class="nav-links">
                 <button class="nav-btn">Accueil</button>
                 <button class="nav-btn">Rechercher un film</button>
             </div>
+            <h3 class="title">Bienvenue au CINOS !</h3>
         </nav>
     </header>
     <div class="container">
@@ -25,11 +26,12 @@
         <input type="text" id="search-bar" placeholder="Recherchez un film..." autocomplete="off">
         <div id="main-box">
             <div class="films">
-                <button id="loadMore" style="display:none;">Charger plus de résultats</button>
             </div>
+            
         </div>
+        <button id="loadMore" class="more">Charger plus de résultats</button>
     </div>
-    <script src="/1JS_CINOS/js/search.js"></script>
+    <script src="/js/search.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-// Constantes
 const OMDB_API_KEY = 'fb886a74';
 const BASE_URL = 'https://www.omdbapi.com/';
 const filmsContainer = document.querySelector('.films');
@@ -53,20 +52,6 @@ function displayMovies(movies) {
 
 document.addEventListener('DOMContentLoaded', () => {
     getTrendingMovies();
-    
-    
-    const searchInput = document.querySelector('.search-input');
-    const searchForm = document.querySelector('.search-form');
-
-    searchForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const searchTerm = searchInput.value.trim();
-        if (searchTerm && searchTerm.length >= 3) {
-            searchMovies(searchTerm);
-        } else if (searchTerm) {
-            alert('Veuillez entrer au moins 3 caractères pour la recherche');
-        }
-    });
 });
 
 async function searchMovies(searchTerm, page = 1) {
